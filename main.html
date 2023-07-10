@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-3">
+        <h2>Create Record <i class="fas fa-plus"></i></h2>
+        <form>
+          <div class="form-group">
+            <label for="txtCID">CID:</label>
+            <input type="text" name="txtCID" id="txtCID" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="txtName">Name:</label>
+            <input type="text" name="txtName" id="txtName" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="txtPhone">Phone:</label>
+            <input type="text" name="txtPhone" id="txtPhone" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="txtAddress">Address:</label>
+            <input type="text" name="txtAddress" id="txtAddress" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="txtEmail">Email:</label>
+            <input type="text" name="txtEmail" id="txtEmail" class="form-control">
+          </div>
+          <button type="button" onclick="insertRecord()" class="btn btn-primary"><i class="fas fa-save"></i> Insert Record</button>
+        </form>
+      </div>
+
+      <div class="col-md-3">
+        <h2>Read Records <i class="fas fa-eye"></i></h2>
+        <button type="button" onclick="readRecords()" class="btn btn-primary"><i class="fas fa-database"></i> Read Record</button>
+        <div id="customerData" class="mt-4"></div>
+      </div>
+
+      <div class="col-md-3">
+        <h2>Update Record <i class="fas fa-edit"></i></h2>
+        <form>
+          <div class="form-group">
+            <label for="upCID">CID:</label>
+            <input type="text" name="txtCID" id="upCID" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="upPhone">Phone:</label>
+            <input type="text" name="txtPhone" id="upPhone" class="form-control">
+          </div>
+          <button type="button" onclick="updateRecord()" class="btn btn-primary"><i class="fas fa-sync"></i> Update Record</button>
+        </form>
+        <div id="resultMessage" class="mt-4"></div>
+      </div>
+
+      <div class="col-md-3">
+        <h2>Delete Record <i class="fas fa-trash"></i></h2>
+        <form>
+          <div class="form-group">
+            <label for="delCID">CID:</label>
+            <input type="text" name="txtCID" id="delCID" class="form-control">
+          </div>
+          <button type="button" onclick="deleteRecord()" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete Record</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript code for CRUD operations
+    function insertRecord() {
+      const cid = document.getElementById('txtCID').value;
+      const name = document.getElementById('txtName').value;
+      const phone = document.getElementById('txtPhone').value;
+      const address = document.getElementById('txtAddress').value;
+      const email = document.getElementById('txtEmail').value;
+
+      const data = {
+        cid: cid,
+        name: name,
+        phone: phone,
+        address: address,
+        email: email
+      };
+
+      fetch("http://localhost:3000/create", {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+        .then(response => response.text())
+        .then(result => {
+          console.log(result);
+          alert(result);
+        })
+        .catch(error => console.log('error', error));
+    }
+
+    function readRecords() {
+      fetch("http://localhost:3000/read")
+        .then(response => response.json())
+        .then(result => {
+          const customerData = document.getElementById("customerData");
+          customerData.innerHTML = "";
+
+          result.forEach(element => {
+            customerData.innerHTML += "<br>CID: " + element.cid;
+            customerData.innerHTML += "<br>Name: " + element.name;
+            customerData.innerHTML += "<br>Phone: " + element.phone;
+            customerData.innerHTML += "<br>Address: " + element.address;
+            customerData.innerHTML += "<br>Email: " + element.email;
+            customerData.innerHTML += "<hr>";
+          });
+        })
+        .catch(error => console.log('error', error));
+    }
+
+    function updateRecord() {
+      const cid = document.getElementById('upCID').value;
+      const phone = document.getElementById('upPhone').value;
+
+      const data = {
+        cid: cid,
+        phone: phone
+      };
+
+      fetch("http://localhost:3000/update", {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+        .then(response => response.text())
+        .then(result => {
+          const resultMessage = document.getElementById("resultMessage");
+          resultMessage.textContent = result;
+        })
+        .catch(error => console.log('error', error));
+    }
+
+    function deleteRecord() {
+      const cid = document.getElementById('delCID').value;
+
+      fetch("http://localhost:3000/delete", {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            cid: cid
+          })
+        })
+        .then(response => response.text())
+        .then(result => {
+          alert(result);
+        })
+        .catch(error => console.log('error', error));
+    }
+    // ...
+  </script>
+</body>
+
+</html>

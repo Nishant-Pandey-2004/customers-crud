@@ -1,0 +1,50 @@
+[{
+  "_id": {
+    "$oid": "64aa54a7d606d942cad0f548"
+  },
+  "cid": "1",
+  "name": "Nilesh Pal",
+  "phone": "762092xxxx",
+  "address": "Nalasopara",
+  "email": "1032210640@tcetmumbai.in"
+},
+{
+  "_id": {
+    "$oid": "64aa54f4d606d942cad0f549"
+  },
+  "cid": "2",
+  "name": "Aditya Palande",
+  "phone": "876676xxxx",
+  "address": "Vasai",
+  "email": "1032210641@tcetmumbai.in"
+},
+{
+  "_id": {
+    "$oid": "64aa5524d606d942cad0f54a"
+  },
+  "cid": "3",
+  "name": "Karan Panda",
+  "phone": "771506xxxx",
+  "address": "Kandivali",
+  "email": "1032210642@tcetmumbai.in"
+},
+{
+  "_id": {
+    "$oid": "64aa5572d606d942cad0f54b"
+  },
+  "cid": "4",
+  "name": "Anand Pandey",
+  "phone": "908266xxxx",
+  "address": "CST",
+  "email": "1032210643@tcetmumbai.in"
+},
+{
+  "_id": {
+    "$oid": "64aa5629d606d942cad0f54d"
+  },
+  "cid": "5",
+  "name": "Nishant Pandey",
+  "phone": "892856xxxx",
+  "address": "Andheri",
+  "email": "1032210644@tcetmumbai.in"
+}]
