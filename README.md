@@ -15,7 +15,7 @@ Tech Stack:
 Instructions:
 1. Clone the repository: git clone [https://github.com/your-username/customer-management-app.git](https://github.com/Nishant-Pandey-2004/customers-crud.git)
 2. Install the required dependencies: npm install
-3. Set up your MongoDB database and update the connection details in the config file.
+3. Set up your MongoDB database ('shopdb') with a collection ('customers') and update the connection details in the config file.
 4. Start the server: npm start
 5. Access the web application in your browser at localhost.
 
