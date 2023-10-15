@@ -2,15 +2,18 @@
 This repository contains a web application built with JavaScript, MongoDB, and HTML/CSS, which allows users to perform CRUD operations (Create, Read, Update, Delete) on customer data.
 
 ## Features:
+
+ <img src="https://github.com/karan-panda/customers-crud/assets/108183567/c66a5c07-afa7-4978-9bfc-8597fa2fd061" align="right" alt="Example Image" width="300">
+ 
 - Create: Add new customers to the database by filling out a form with their details.
 - Read: Display a list of all customers with their information, including name, email, and phone number.
 - Update: Edit and update customer details, such as their  phone number.
 - Delete: Remove customers from the database with a delete functionality.
 
 ## Tech Stack:
-- Frontend: HTML, CSS, JavaScript
-- Backend: Node.js, Express.js
-- Database: MongoDB 
+- 🌐 Frontend: **HTML, CSS, JavaScript**
+- 🖥️ Backend: **Node.js, Express.js**
+- 📦 Database: **MongoDB**
 
 ## Instructions:
 1. Clone the repository: 
